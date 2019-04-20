@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Setting up your GitHub Pages site locally with Jekyll"
+title:  "Configure Jekyll locally"
 date:   2019-04-19 14:19:01 +0900
 categories: jekyll
 tag: jekyll
