@@ -1621,7 +1621,60 @@ public class JpaConfig implements TransactionManagementConfigurer {
 ```
 ->
 ```
-
+@Configuration
+@EnableTransactionManagement
+@ImportResource({ "classpath:META-INF/spring/transaction-config.xml" })
+@Slf4j
+@EnableJpaRepositories(basePackages = "com.rsupport.seminar.core.repository")
+@EnableJpaAuditing
+public class JpaConfig {
+  @Autowired
+  private Environment env;
+  @Autowired
+  private DataSource dataSource;
+  @Bean
+  public AuditorAware<String> auditorProvider() {
+    return new SpringSecurityAuditorAware();
+  }
+  @Bean
+  public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
+    return new PersistenceExceptionTranslationPostProcessor();
+  }
+  @Bean
+  public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+      EntityManagerFactoryBuilder builder) {
+    return builder
+        .dataSource(dataSource)
+        .packages("com.rsupport.seminar.core.domain")
+        .persistenceUnit(GenericRepositoryJpa.PERSISTENCE_UNIT_NAME)
+        .build();
+  }
+  @Bean
+  public DatabaseConfiguration config() {
+    return new DatabaseConfiguration(dataSource, "zt_config", "id", "value");
+  }
+  @Bean
+  public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
+    return new NamedParameterJdbcTemplate(dataSource);
+  }
+  @Bean
+  public JdbcTemplate jdbcTemplate() {
+    return new JdbcTemplate(dataSource);
+  }
+  @Bean
+  public PropertiesFactoryBean sqlProperties() {
+    PropertiesFactoryBean bean = new PropertiesFactoryBean();
+    String dbType = env.getProperty("db.type");
+    StringBuilder builder = new StringBuilder();
+    builder.append("sql/");
+    if (StringUtils.isNotEmpty(dbType)) {
+      builder.append(dbType).append("_");
+    }
+    builder.append("native_query.xml");
+    bean.setLocation(new ClassPathResource(builder.toString()));
+    return bean;
+  }
+}
 
 ```
 ### TestCode
