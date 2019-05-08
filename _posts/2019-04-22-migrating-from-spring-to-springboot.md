@@ -1514,7 +1514,6 @@ spring.jpa.properties.hibernate.cache.region.factory_class=org.hibernate.cache.e
 @Configuration
 @PropertySource(value = { "classpath:jdbc.properties", "file:${rm_home}/config/jdbc.properties" }, ignoreResourceNotFound = true)
 @EnableTransactionManagement
-@ImportResource({ "classpath:META-INF/spring/transaction-config.xml" })
 @Slf4j
 @EnableJpaRepositories(basePackages = "com.rsupport.seminar.core.repository")
 @EnableJpaAuditing
@@ -1623,7 +1622,6 @@ public class JpaConfig implements TransactionManagementConfigurer {
 ```
 @Configuration
 @EnableTransactionManagement
-@ImportResource({ "classpath:META-INF/spring/transaction-config.xml" })
 @Slf4j
 @EnableJpaRepositories(basePackages = "com.rsupport.seminar.core.repository")
 @EnableJpaAuditing
