@@ -2,8 +2,8 @@
 layout: post
 title:  "How to Deploy a WAR File to Tomcat"
 date:   2019-04-20 10:55:00 +0900
-categories: Java
-tag: DevOps, Tomcat, Maven
+categories: DevOps
+tag: Maven
 ---
 
 * content

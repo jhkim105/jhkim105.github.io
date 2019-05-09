@@ -2,7 +2,7 @@
 layout: post
 title:  "Configure Jekyll locally"
 date:   2019-04-19 14:19:01 +0900
-categories: Jekyll
+categories: Etc
 tag: Jekyll
 ---
 

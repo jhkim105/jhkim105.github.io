@@ -2,8 +2,8 @@
 layout: post
 title:  "Migrating from Spring to Spring Boot"
 date:   2019-04-22 10:55:00 +0900
-categories: Java
-tag: Spring, SpringBoot
+categories: Backend
+tag: SpringBoot
 ---
 
 * content

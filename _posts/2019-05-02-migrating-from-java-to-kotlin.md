@@ -2,8 +2,8 @@
 layout: post
 title:  "Migrating from Java to Kotlin"
 date:   2019-05-02 22:00:00 +0900
-categories: Kotlin
-tag: SpringBoot
+categories: Backend
+tag: Kotlin
 ---
 
 * content
