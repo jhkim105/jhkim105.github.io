@@ -42,13 +42,16 @@ OK를 누르고 나면 pom.xml에 Kotlin관련 설정이 추가됨
 
 ## CollectorApplicationTests
 ![]({{site.url}}/assets/images/java2kotlin6-1.png)
-->
+  
+->  
 ![]({{site.url}}/assets/images/java2kotlin6-2.png)
 
 ## DateUtilsTest
 ![]({{site.url}}/assets/images/java2kotlin7-1.png)
-->
+  
+->  
 ![]({{site.url}}/assets/images/java2kotlin7-2.png)
+  
 Kotlin code에서 Lombok으로 생성된 메소드(Gettter/Setter)를 접근 못함(Kotlin이 먼저 Compile 되기 때문)
 @Slf4j를 직접 코드로 구현. 로깅에 관한 방법은 여러가지가 있다.  
 https://discuss.kotlinlang.org/t/best-practices-for-loggers/226/2  
