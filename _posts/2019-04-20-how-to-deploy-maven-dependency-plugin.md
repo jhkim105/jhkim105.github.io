@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Deploy a WAR File to Tomcat"
+title:  "How to Deploy - maven-depedency-plugin"
 date:   2019-04-20 10:55:00 +0900
 categories: DevOps
 tag: Maven
@@ -10,7 +10,7 @@ tag: Maven
 {:toc}
 
 
-How to Deploy a WAR File to Tomcat - Using Maven Dependency Plugin
+maven-depdency-plugin을 사용하여 배포하기
 
 
 ------------
