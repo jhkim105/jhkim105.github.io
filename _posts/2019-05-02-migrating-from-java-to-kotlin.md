@@ -26,31 +26,31 @@ Migrating from Spring Boot Java to Kotlin
 
 # Convert Java To Kotlin
 IntelliJ Convert Java File to Kotlin File 기능 사용
-![]({{site.url}}/assets/images/java2kotlin.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin.png)
 
 처음 실행하는 경우 Kotlin 환경 구성 관련 알림이 뜬다
-![]({{site.url}}/assets/images/java2kotlin2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin2.png)
 
-![]({{site.url}}/assets/images/java2kotlin3.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin3.png)
 
 OK를 누르고 나면 pom.xml에 Kotlin관련 설정이 추가됨
-![]({{site.url}}/assets/images/java2kotlin4.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin4.png)
 
-![]({{site.url}}/assets/images/java2kotlin5.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin5.png)
 
 # TestCode 변환
 
 ## CollectorApplicationTests
-![]({{site.url}}/assets/images/java2kotlin6-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin6-1.png)
   
 ->  
-![]({{site.url}}/assets/images/java2kotlin6-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin6-2.png)
 
 ## DateUtilsTest
-![]({{site.url}}/assets/images/java2kotlin7-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin7-1.png)
   
 ->  
-![]({{site.url}}/assets/images/java2kotlin7-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin7-2.png)
   
 Kotlin code에서 Lombok으로 생성된 메소드(Gettter/Setter)를 접근 못함(Kotlin이 먼저 Compile 되기 때문)
 @Slf4j를 직접 코드로 구현. 로깅에 관한 방법은 여러가지가 있다.  
@@ -63,40 +63,40 @@ private val log = LoggerFactory.getLogger(javaClass)
 ```
 
 ## ErrorLogControllerTest
-![]({{site.url}}/assets/images/java2kotlin8-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin8-1.png)
   
 ->
-![]({{site.url}}/assets/images/java2kotlin8-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin8-2.png)
 
 Compile Error 수정
-![]({{site.url}}/assets/images/java2kotlin8-3.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin8-3.png)
 
 ## S3UtilsTest
-![]({{site.url}}/assets/images/java2kotlin9-1.png)  
+![]({{site.url}}/assets/images/2019-05/java2kotlin9-1.png)  
 
 ->  
-![]({{site.url}}/assets/images/java2kotlin9-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin9-2.png)
 
 접근제어자는 internal, private, protected, public  
 지정하지 않으면 public  
 lateinit을 사용하여 ?  및 = null 제거
 
-![]({{site.url}}/assets/images/java2kotlin9-3.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin9-3.png)
 
 # VO(DTO)
 ## CrashLogRequest
-![]({{site.url}}/assets/images/java2kotlin10-1.png)  
+![]({{site.url}}/assets/images/2019-05/java2kotlin10-1.png)  
   
 ->
 Getter/Setter  
-![]({{site.url}}/assets/images/java2kotlin10-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin10-2.png)
   
 Getter  
-![]({{site.url}}/assets/images/java2kotlin10-3.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin10-3.png)
 
 
 Getter 접근시 property를 접근함  
-![]({{site.url}}/assets/images/java2kotlin10-4.png)  
+![]({{site.url}}/assets/images/2019-05/java2kotlin10-4.png)  
 
 Request VO class는 data OR 일반 클래스?  
 일반 class로 만들 경우 Java처럼 private, getter, setter 방식으로 하는게 맞을까?   
@@ -111,7 +111,7 @@ var stringRepresentation: String
 
 ## CrashLog - Builder 구현
 Lombok에서 만든 코드를 Kotlin에서 참조할 수 없으므로 Builder를 직접 구현해야 한다.
-![]({{site.url}}/assets/images/java2kotlin11-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin11-1.png)
 ->
 ```
 class CrashLog : Serializable {
@@ -221,7 +221,7 @@ class CrashLog : Serializable {
 
 # Maven Build 순서 지정하기(Kotlin First)
 maven build하면 target/에 class파일이 생성 안된다. CrashLogController.java에서 앞에서 Kotlin으로 변경하는 코드를 참조하는데, maven build에서는 기본적으로 maven-compiler가 가장 먼저 실행된다. 다음과 같이 설정을 추가해줘야 한다.
-![]({{site.url}}/assets/images/java2kotlin12-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin12-1.png)
 
 ## kotlin-maven-plugin
 ```
@@ -315,12 +315,12 @@ maven build하면 target/에 class파일이 생성 안된다. CrashLogController
 
 
 # Controller
-![]({{site.url}}/assets/images/java2kotlin13-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin13-1.png)
   
 ->  
-![]({{site.url}}/assets/images/java2kotlin13-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin13-2.png)
   
-![]({{site.url}}/assets/images/java2kotlin13-3.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin13-3.png)
 
 ```
 @RestController
@@ -507,9 +507,9 @@ fun main(args: Array<String>) {
 ```
 D:\dev-logcollector\workspace\logcollector\collector\src\main\kotlin\com\rsupport\logcollector\collector\crashlog\CrashLogController.kt: (66, 36) Type mismatch: inferred type is String? but String was expected
 ```
-![]({{site.url}}/assets/images/java2kotlin14-1.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin14-1.png)
   
-![]({{site.url}}/assets/images/java2kotlin14-2.png)
+![]({{site.url}}/assets/images/2019-05/java2kotlin14-2.png)
   
 ->  
 ```
