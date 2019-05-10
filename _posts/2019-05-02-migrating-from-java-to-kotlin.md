@@ -513,8 +513,8 @@ D:\dev-logcollector\workspace\logcollector\collector\src\main\kotlin\com\rsuppor
   
 ->  
 ```
- @Value("\${logcollector.crashlog.url}")
-    private lateinit var url: String
+  @Value("\${logcollector.crashlog.url}")
+  private lateinit var url: String
 ```
 
 # TODO
