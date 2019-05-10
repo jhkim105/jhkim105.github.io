@@ -100,7 +100,7 @@ Getter 접근시 property를 접근함
 
 Request VO class는 data OR 일반 클래스?  
 일반 class로 만들 경우 Java처럼 private, getter, setter 방식으로 하는게 맞을까?   
-Kottlin에서 Getter/Setter는 다음과 같이 
+Kotlin에서 Getter/Setter는 다음과 같이 
 ```
 var stringRepresentation: String
     get() = this.toString()
@@ -223,7 +223,7 @@ class CrashLog : Serializable {
 maven build하면 target/에 class파일이 생성 안된다. CrashLogController.java에서 앞에서 Kotlin으로 변경하는 코드를 참조하는데, maven build에서는 기본적으로 maven-compiler가 가장 먼저 실행된다. 다음과 같이 설정을 추가해줘야 한다.
 ![]({{site.url}}/assets/images/java2kotlin12-1.png)
 
-## kottlin-maven-plugin
+## kotlin-maven-plugin
 ```
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
@@ -337,14 +337,14 @@ class CrashLogController(private val runtimeProperties: RuntimeProperties,
     @PostMapping
     fun collect(crashLogRequest: CrashLogRequest, multipartRequest: MultipartRequest, request: HttpServletRequest): ResponseEntity<Any> {
         log.debug("req:{}", crashLogRequest)
-        if (!runtimeProperties!!.isCollectorEnabled) {
+        if (!runtimeProperties.isCollectorEnabled) {
             log.info("collector not enabled.")
         }
         val crashLog = crashLogRequest.toCrashLog()
         crashLog.clientIp = request.remoteAddr
         val multipartFile = multipartRequest.getFile("ErrFile")
         if (multipartFile != null && !multipartFile.isEmpty) {
-            val path = logFileUploader!!.upload(crashLog.logKey, multipartFile)
+            val path = logFileUploader.upload(crashLog.logKey, multipartFile)
             crashLog.filePath = path
             crashLog.fileUrl = getFileUrl(path)
         }
