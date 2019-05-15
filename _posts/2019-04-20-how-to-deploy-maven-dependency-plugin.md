@@ -37,7 +37,6 @@ sudo yum install -y apache-maven
 <localRepository>/DATA/.m2/repository</localRepository>
 ```
 ```
-<localRepository>/DATA/.m2/repository</localRepository>
     <profile>
       <id>default</id>
       <repositories>
