@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Installing Spring Boot Appliations"
+title:  "Installing Spring Boot Applications"
 date:   2019-05-14 20:00:00 +0900
 categories: Backend
 tag: SpringBoot
