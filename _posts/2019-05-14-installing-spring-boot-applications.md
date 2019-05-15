@@ -47,7 +47,7 @@ mkdir /DATA/WEB/.m2
       <repositories>
         <repository>
           <id>rsupport-public</id>
-          <url>http://repo.rsupport.com:8081/repository/maven-public</url>
+          <url>http://xxx.xxx.xxx/repository/maven-public</url>
           <snapshots>
             <enabled>true</enabled>
             <updatePolicy>always</updatePolicy>
