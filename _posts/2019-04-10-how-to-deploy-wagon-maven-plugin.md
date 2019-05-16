@@ -106,5 +106,8 @@ wagon:upload-single wagon:sshexec -e -Ddeploy.version=1.0.1-SNAPSHOT -Ddeploy.na
 ![IntelliJ에서 실행]({{site.url}}/assets/images/2019-05/wagon-intellij.png)   
 
 # Jenkins
-![Jenkins-1]({{site.url}}/assets/images/2019-05/wagon-01.png)   
+LogCollector를 두개의 서버에 배포하는 Jenkins 설정
+![Jenkins-1]({{site.url}}/assets/images/2019-05/wagon-01.png) 
+  
+두번째 서버에 배포하기 위한 설정 - Profile을 활용
 ![Jenkins-2]({{site.url}}/assets/images/2019-05/wagon-02.png)  
