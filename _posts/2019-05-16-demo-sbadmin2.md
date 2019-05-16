@@ -275,3 +275,4 @@ $(function (){
 지금까지 SBAdmin2 bootstrap template를 사용해서 어드민 로그인 기능을 구현해보았다. 
 Thymeleaf Fragments/Layout Dialect를 활용해서 page를 구성하는 방법은 [여기]({{site.url}}/2019/05/16/demo-thymeleaf-layout/)에서 다룰 예정이다.
 
+[Github](https://github.com/jhkim105/demo-sbadmin)
