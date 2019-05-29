@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "OneLogin SAML SSO"
-date:   2019-05-27 10:00:00 +0900
+date:   2019-05-22 20:00:00 +0900
 categories: Backend
 tag: SAML
 ---
