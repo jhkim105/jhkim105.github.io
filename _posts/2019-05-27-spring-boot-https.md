@@ -34,14 +34,14 @@ keytool -genkey -alias localKeyStore -keyalg RSA -keystore local.jks
 keytool -export -alias <keystore's alias> -keystore <kestore's file name> -rfc -file <cert file name>.cer
 ```
 keytool -export -alias localKeyStore -keystore local.jks -rfc -file local.cer
-![keystore]({{site.url}}/assets/images/2019-05/spring-boot-https-03.png)  
+![cert]({{site.url}}/assets/images/2019-05/spring-boot-https-03.png)  
 
 ## TrustStore
 ```
 keytool -import -alias <truststore's alias> -file <cert file name> - keystore <truststore file name>.ts
 ```
 keytool -import -alias localTrustStore -file local.ts -keystore local.ts
-![keystore]({{site.url}}/assets/images/2019-05/spring-boot-https-04.png)  
+![truststore]({{site.url}}/assets/images/2019-05/spring-boot-https-04.png)  
 
 # Spring Boot 인증서 적용하기
 ## application.properties
@@ -56,7 +56,7 @@ server.ssl.trust-store=@project.basedir@/src/main/resources/local.ts
 server.ssl.trust-store-password=dev#443
 ```
 https 접속
-![keystore]({{site.url}}/assets/images/2019-05/spring-boot-https-05.png)  
+![https]({{site.url}}/assets/images/2019-05/spring-boot-https-05.png)  
 
 ## HTTP 추가
 Spring은 기본적으로 http, https 한가지만 설정가능하므로, 둘 다 서비스 하려면 다음과 같은 작업이 필요하다.
