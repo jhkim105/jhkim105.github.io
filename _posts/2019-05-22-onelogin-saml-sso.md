@@ -12,7 +12,7 @@ tag: SAML
 
 
 # Overview
-[OneLogin](https://www.onelogin.com/)을 사용해서 SSO 연동하는 방법에 대해 알아보자. 
+[OneLogin](https://www.onelogin.com/)에서 제공하는 SDK를 사용하여 OneLogin SAML SSO 연동하는 방법에 대해 알아보자. 
 
 # OneLogin SDK
 Java SDK를 제공한다.  
