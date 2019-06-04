@@ -37,7 +37,7 @@ SP에서 entityId를 수정한 후 메타데이터 조회(http://localhost:8080/
 
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-04.png)  
 
-## SP에 KeyStore 생성
+## SP에 인증서 등록
 ### update-certificate.cmd
 테스트 환경이 Windows라서 [update-certficate.sh]( https://github.com/vdenotaris/spring-boot-security-saml-sample/blob/master/src/main/resources/saml/update-certifcate.sh)를 참조하여 cmd로 생성 후 실행함  
 ```
@@ -53,7 +53,7 @@ keytool -import -alias ssocircle -file %CERTIFICATE_FILE% -keystore %KEYSTORE_FI
 
 rm %CERTIFICATE_FILE%
 ```
-update-certificate.cmd를 실행하면 KeyStore file(samlKeystore.jks) 파일이 만들어진다.
+update-certificate.cmd를 실행하면 인증서가 갱신된다.
 
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-06.png)    
 
