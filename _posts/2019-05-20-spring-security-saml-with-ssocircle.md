@@ -38,15 +38,28 @@ SP에서 entityId를 수정한 후 메타데이터 조회(http://localhost:8080/
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-04.png)  
 
 ## SP에 KeyStore 생성
-### 인증서 다운로드
-![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-05.png)   
-인증서를 다운로드하여 SP project의 src/main/resources/saml에 복사 
-
 ### update-certificate.cmd
 테스트 환경이 Windows라서 [update-certficate.sh]( https://github.com/vdenotaris/spring-boot-security-saml-sample/blob/master/src/main/resources/saml/update-certifcate.sh)를 참조하여 cmd로 생성 후 실행함  
+```
+set IDP_HOST=idp.ssocircle.com
+set IDP_PORT=443
+set CERTIFICATE_FILE=ssocircle.cert
+set KEYSTORE_FILE=samlKeystore.jks
+set KEYSTORE_PASSWORD=nalle123
+
+openssl s_client -host %IDP_HOST% -port %IDP_PORT% -prexit -showcerts < NUL | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > %CERTIFICATE_FILE%
+keytool -delete -alias ssocircle -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASSWORD%
+keytool -import -alias ssocircle -file %CERTIFICATE_FILE% -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASSWORD% -noprompt
+
+rm %CERTIFICATE_FILE%
+```
+update-certificate.cmd를 실행하면 KeyStore file(samlKeystore.jks) 파일이 만들어진다.
+
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-06.png)    
 
 정상적으로 실행된 화면
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-07.png)   
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-08.png)   
 ![idp,sp sample]({{site.url}}/assets/images/2019-05/ssocircle-09.png)   
+
+[Git](https://github.com/jhkim105/spring-boot-security-saml-sample.git)
