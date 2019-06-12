@@ -20,7 +20,7 @@ Local에서 개발하다면 https를 서비스해야 되는 경우가 있다. Sp
 1. Spring Boot에 적용
 
 # 인증서 만들기
-## KeyStore
+## KeyStore 생성
 ```
 keytool -genkey -alias <alias> -keyalg RSA -keystore <file name>
 ```
@@ -29,7 +29,8 @@ keytool -genkey -alias localKeyStore -keyalg RSA -keystore local.jks
 
 ![keystore]({{site.url}}/assets/images/2019-05/spring-boot-https-02.png)  
 
-## 인증서 내보내기
+## 인증서 추출
+TrustStore를 생성하기 위해서는 KeyStore에서 인증서를 추출해야 함.
 ```
 keytool -export -alias <keystore's alias> -keystore <kestore's file name> -rfc -file <cert file name>
 ```
@@ -37,6 +38,7 @@ keytool -export -alias localKeyStore -keystore local.jks -rfc -file local.cer
 ![cert]({{site.url}}/assets/images/2019-05/spring-boot-https-03.png)  
 
 ## TrustStore
+TrustStore는 클라언트가 신뢰할 수 있는 인증서만을 가지고 있다.  
 ```
 keytool -import -alias <truststore's alias> -file <cert file name> - keystore <truststore file name>
 ```
@@ -44,6 +46,7 @@ keytool -import -alias localTrustStore -file local.cer -keystore local.ts
 ![truststore]({{site.url}}/assets/images/2019-05/spring-boot-https-04.png)  
 
 # Spring Boot 인증서 적용하기
+위에서 생성한 KeyStore, TrustStore를 사용해서 SSL을 구성한다.
 ## application.properties
 ```
 server.port=8443
