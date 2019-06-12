@@ -31,16 +31,16 @@ keytool -genkey -alias localKeyStore -keyalg RSA -keystore local.jks
 
 ## 인증서 내보내기
 ```
-keytool -export -alias <keystore's alias> -keystore <kestore's file name> -rfc -file <cert file name>.cer
+keytool -export -alias <keystore's alias> -keystore <kestore's file name> -rfc -file <cert file name>
 ```
 keytool -export -alias localKeyStore -keystore local.jks -rfc -file local.cer
 ![cert]({{site.url}}/assets/images/2019-05/spring-boot-https-03.png)  
 
 ## TrustStore
 ```
-keytool -import -alias <truststore's alias> -file <cert file name> - keystore <truststore file name>.ts
+keytool -import -alias <truststore's alias> -file <cert file name> - keystore <truststore file name>
 ```
-keytool -import -alias localTrustStore -file local.ts -keystore local.ts
+keytool -import -alias localTrustStore -file local.cer -keystore local.ts
 ![truststore]({{site.url}}/assets/images/2019-05/spring-boot-https-04.png)  
 
 # Spring Boot 인증서 적용하기
