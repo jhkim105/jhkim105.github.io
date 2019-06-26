@@ -34,7 +34,7 @@ sudo yum install -y apache-maven
 
  Local repositoyr path 및 Nexus Repository 등록 (/etc/maven/settings.xml)
 ```
-<localRepository>/DATA/.m2/repository</localRepository>
+<localRepository>/DATA/WEB/.m2/repository</localRepository>
 ```
 ```
     <profile>
@@ -151,14 +151,16 @@ Embedded Tomcat에서 운영되는 Spring Boot jar/war인 경우에는 웹 소�
 로그수집서버(Collector)에 적용한 script
 ```
 #!/bin/bash
+
 if [ "$1" == "" ]
 then
   echo "Usage: $0 <VERSION>"
   exit 1
 fi
+
 SERVICE_NAME=collector
-PACKAGE=jar
-HOME_DIR=/DATA/WEB/collector/$SERVICE_NAME
+PACKAGE=war
+HOME_DIR=/DATA/WEB/$SERVICE_NAME
 VER=$1-SNAPSHOT
 
 function download_file() {
@@ -174,13 +176,11 @@ function download_file() {
 
 function stop_service() {
   service $SERVICE_NAME stop
-  #/DATA/WEB/collector/bin/stop.sh collector
 }
 
 function start_service() {
   service $SERVICE_NAME start
 }
-
 stop_service
 download_file
 start_service

@@ -102,7 +102,7 @@ start_service
 
 Shell 실행하여 소스 배포하기
 ```
-./deploy.shell  1.0.2
+./deploy.sh  1.0.2
 ```
 ![소스배포]({{site.url}}/assets/images/2019-05/installing-spring-boot-01.png)  
 
