@@ -47,7 +47,7 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
 base.xml을 include하는 것을 defaults.xml을 include하도록 변경하고, 파일명, level등을 변경 적용한다. 그리고 불필요한 로그를 남기지 않도록 root level을 WARN으로 변경하고 실제 작성한 코드에 대한 로그레벨을 지정하도록 한다. 실제 운영시에는 이 부분도 WARN으로 변경한다.
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="5 seconds">
   <include resource="org/springframework/boot/logging/logback/defaults.xml" />
   <property name="LOG_PATH" value="/DATA/WEB/webrtc/log"/>
   <property name="LOG_FILE" value="${LOG_PATH}/api.log}"/>
