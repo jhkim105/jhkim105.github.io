@@ -60,6 +60,13 @@ base.xml을 include하는 것을 defaults.xml을 include하도록 변경하고, 
   </root>
 </configuration>
 ```
+log file 지정
+application.properties
+```
+logging.file=/DATA/WEB/webrtc/log/api.log
+```  
+logging.path로 directory만 지정하면 지정한 디렉토리에 spring.log로 로그파일이 생긴다.
+
 이렇게 서비스에 적용해보니 spring.log는 더이상 기록되지 않고, api.log가 롤링되고, 파일 사이즈가 초기화 되었다. logrotate를 적용해서 롤링을 하지 않아도 되겠다.
 ![application.yml]({{site.url}}/assets/images/2019-05/logback-02.png)  
 
@@ -81,6 +88,8 @@ base.xml을 include하는 것을 defaults.xml을 include하도록 변경하고, 
 
 처음에는 application.yml에 해당 설정을 지웠는데, classpath에 존재하는 application.yml의 설정이 적용되어, TRACE 로그가 사라지지 않았다. configuration 적용이 ./config에 있는 파일이 적용될 줄 알았는데, classpath 파일이 적용 된 후 ./config/에 있는 설정은 오버라이드 된다.
 이것은 [Reference](https://docs.spring.io/spring-boot/docs/2.1.4.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)에 잘 설명되어 있다.  
+
+## spring confing 적용 순서
 config 적용 순서를 정리하면  
 * default:  
  classpath:/ -> classpath:/config/ -> file:./ -> file:./config/
@@ -92,6 +101,36 @@ config 적용 순서를 정리하면
  classpath:/ -> classpath:/config/ -> file:./ -> file:./config/ -> classpath:/custom-config/ -> file:./custom-config/
 
 spring.config.location을 사용하는 경우에는 지정한 프로퍼티만 적용되고, spring.config.addtional-location을 사용하는 경우에는 default가 적용되고 지정한 프로퍼티가 적용된다.
+
+
+## log 파일명 또는 디렉토리 지정하기
+logging.path 또는logging.file을 사용해서 파일명 또는 디렉토리를 지정할 수 있다.  
+이 설정이 적용되게 하려면 base.xml에서 처럼 로그파일 관련하여 다음 설정을 추가한다.
+```
+<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+```
+logback-spring.xml
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+  <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+  <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+  <logger name="org.springframework" level="INFO"/>
+  <root level="DEBUG">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+application.properties
+```
+logging.file=/DATA/WEB/remotemeeting/log/document.log
+logging.path로 directory만 지정하면 spring.log로 로그파일이 생긴다.
+```
+
+
 
 
 
