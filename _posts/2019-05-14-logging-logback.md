@@ -127,8 +127,8 @@ logback-spring.xml
 application.properties
 ```
 logging.file=/DATA/WEB/remotemeeting/log/document.log
-logging.path로 directory만 지정하면 spring.log로 로그파일이 생긴다.
 ```
+logging.path로 directory만 지정하면 spring.log로 로그파일이 생긴다.
 
 
 
