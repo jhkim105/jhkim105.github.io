@@ -38,7 +38,7 @@ sudo yum install -y apache-maven
 ```
 ```
     <profile>
-      <id>default</id>
+      <id>rsupport-repo</id>
       <repositories>
         <repository>
           <id>rsupport-public</id>
@@ -52,9 +52,9 @@ sudo yum install -y apache-maven
     </profile>
 ```
 ```
-<activeProfiles>
-    <activeProfile>default</activeProfile>
-</activeProfiles>
+  <activeProfiles>
+    <activeProfile>rsupport-repo</activeProfile>
+  </activeProfiles>
 ```
 ![Deploy result]({{site.url}}/assets/images/maven-installed-version.png)
 
