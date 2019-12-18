@@ -81,8 +81,8 @@ logging.path로 directory만 지정하면 지정한 디렉토리에 spring.log�
 
 사실 Query를 출력하기 위한 용도의 설정은 application.yml보다는 동적으로 로딩을 지원하는 logback.xml에 설정하는 것이 더 좋겠다.
 ```
-<logger name=" org.hibernate.SQL" level="DEBUG"/>
-<logger name=" org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+<logger name="org.hibernate.SQL" level="DEBUG"/>
+<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
 <logger name="org.hibernate.type.EnumType" level="TRACE"/>
 ```
 
