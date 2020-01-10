@@ -132,8 +132,10 @@ logging.path로 directory만 지정하면 spring.log로 로그파일이 생긴�
 
 
 
-
-
+logging.file을 지정해도, 기본적으로 java.io.tmpdir에 spring.log를 접근한다. 로그를 기록하지는 않음. 이것이 문제가 된다면 다음과 같이 직접 지정.  
+```
+<property name="LOG_FILE" value="${LOG_PATH}/api.log"/>
+```
 
 
 
